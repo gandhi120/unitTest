@@ -1,0 +1,12 @@
+# Node modules
+node_modules/
+
+# Lock files
+package-lock.json
+yarn.lock
+
+# Jest coverage
+coverage/
+
+# Temporary files
+*.log
