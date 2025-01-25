@@ -1,4 +1,4 @@
-function multiply(shouldFail = false) {
+const fetchData = (shouldFail = false) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (shouldFail) {
@@ -10,6 +10,6 @@ function multiply(shouldFail = false) {
       }
     }, 100);
   });
-}
+};
 
-module.exports = multiply;
+module.export = fetchData;
