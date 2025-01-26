@@ -1,7 +1,8 @@
 // const { describe } = require("yargs");
 const multiply = require("./index");
-const { calculate } = require("./app");
-const { add } = require("./mathUtils");
+const { add, calculate } = require("./calculate");
+const myModule = require("./spy");
+
 // const fetchData = require("./fetchData");
 
 describe("Multiply Test", () => {
@@ -86,11 +87,24 @@ describe("Multiply Test", () => {
   });
 });
 
-jest.mock("./mathUtils");
-describe("TEST MOCK", () => {
-  test("calls add function with param", () => {
-    calculate(1, 2, "add");
-    expect(add).toHaveBeenCalled();
-    expect(add).toHaveBeenCalledWith(1, 2);
-  });
+// jest.mock("./mathUtils");
+
+// describe("TEST MOCK", () => {
+//   test("calls add function with param", () => {
+//     // const add = jest.fn((a, b) => a + b);
+//     // add(1, 2);
+//     calculate(1, 2, "add");
+//     expect(add).toHaveBeenCalled();
+//     // expect(add).toHaveBeenCalledWith(1, 2);
+//   });
+// });
+
+//SPY...
+
+//SPY
+test("Should spy on function", () => {
+  const spy = jest.spyOn(myModule, "myFunction");
+  myModule.myFunction();
+  expect(spy).toHaveBeenCalled();
+  spy.mockRestore();
 });

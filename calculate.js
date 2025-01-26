@@ -1,4 +1,21 @@
-const { add, subtract, multiply, divide } = require("./mathUtils");
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+function multiply(a, b) {
+  return a * b;
+}
+
+function divide(a, b) {
+  if (b === 0) {
+    throw new Error("Cannot divide by zero");
+  }
+  return a / b;
+}
 
 function calculate(a, b, operation) {
   switch (operation) {
@@ -15,4 +32,4 @@ function calculate(a, b, operation) {
   }
 }
 
-module.exports = { calculate };
+module.exports = { add, subtract, multiply, divide, calculate };
