@@ -1,4 +1,7 @@
+// const { describe } = require("yargs");
 const multiply = require("./index");
+const { calculate } = require("./app");
+const { add } = require("./mathUtils");
 // const fetchData = require("./fetchData");
 
 describe("Multiply Test", () => {
@@ -80,5 +83,14 @@ describe("Multiply Test", () => {
 
   test("ASYNC TEST", async () => {
     await expect(multiply()).resolves.toBe("chocolate");
+  });
+});
+
+jest.mock("./mathUtils");
+describe("TEST MOCK", () => {
+  test("calls add function with param", () => {
+    calculate(1, 2, "add");
+    expect(add).toHaveBeenCalled();
+    expect(add).toHaveBeenCalledWith(1, 2);
   });
 });
