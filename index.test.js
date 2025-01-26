@@ -2,7 +2,7 @@
 const multiply = require("./index");
 const { add, calculate } = require("./calculate");
 const myModule = require("./spy");
-
+const { addToArray } = require("./arrayUtils");
 // const fetchData = require("./fetchData");
 
 describe("Multiply Test", () => {
@@ -107,4 +107,32 @@ test("Should spy on function", () => {
   myModule.myFunction();
   expect(spy).toHaveBeenCalled();
   spy.mockRestore();
+});
+
+describe("setup and teardownfunction..", () => {
+  let testArray;
+  beforeAll(() => {
+    console.log("Before all test : initializearray", testArray);
+    testArray = [];
+  });
+
+  afterAll(() => {
+    console.log("After all test : clear", testArray);
+    testArray = null;
+  });
+
+  beforeEach(() => {
+    console.log("beforeEach all test : clear", testArray);
+    testArray = [];
+  });
+
+  afterEach(() => {
+    console.log("afterEach all test : clear", testArray);
+    testArray = [];
+  });
+
+  test("add item to array", () => {
+    addToArray(testArray, "ritik");
+    expect(testArray).toContain("ritik");
+  });
 });
